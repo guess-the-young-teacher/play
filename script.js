@@ -256,20 +256,6 @@ nameInput.addEventListener("input", () => {
 
             return;
         }
-
-        // Admin-approved replay overrides local lock.
-        if (status.played === false) {
-            clearLocalPlayLock();
-
-            startButton.disabled = false;
-            startButton.classList.add("enabled");
-
-            playStatusMessage.textContent = "You can play.";
-            playStatusMessage.className =
-                "play-status-message can-play";
-
-            return;
-        }
     }, 350);
 });
 
@@ -800,9 +786,7 @@ async function finishGame() {
     }
 
     // Remember completed game locally.
-    if (playerName) {
         setLocalPlayLock();
-    }
 
     // =========================
     // STOP MUSIC
